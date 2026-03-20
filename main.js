@@ -1,6 +1,4 @@
 const header = document.querySelector("header");
-
-
 window.addEventListener('scroll', () => {
     if (window.scrollY >= 50) {
         header.classList.add('smaller');
@@ -8,6 +6,8 @@ window.addEventListener('scroll', () => {
         header.classList.remove('smaller');
     }
 });
+
+
 
 const images = document.querySelectorAll(".gallery img");
 const lightbox = document.querySelector(".lightbox");
@@ -46,4 +46,20 @@ nextBtn.addEventListener("click", () => {
 prevBtn.addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     displayLightbox(currentIndex);
+});
+
+// Mobile menu
+
+const menuIcon = document.querySelector(".menu-icon");
+const mobileMenuContainer = document.querySelector(".mobile-menu-container");
+const allMenuItems = document.querySelectorAll(".mobile-menu-container a");
+
+menuIcon.addEventListener("click", ()=>{
+  mobileMenuContainer.classList.toggle("active");  
+});
+
+allMenuItems.forEach(a => {
+   a.addEventListener("click", ()=>{
+    mobileMenuContainer.classList.remove("active");
+   }); 
 });
